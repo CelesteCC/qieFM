@@ -1,0 +1,103 @@
+/**index.wxss**/
+.header{
+  height: 80rpx;
+  display: table;
+  table-layout: fixed;
+  width: 100%;
+}
+.logo{
+  width: 228rpx;
+  overflow: hidden;
+  display: table-cell;
+  vertical-align: middle;
+  text-align: left;
+  padding-left: 30rpx;
+  box-sizing: border-box;
+}
+.logo image{
+  width: 148rpx;
+  margin-top: 10rpx;
+}
+.nav{
+  display: table-cell;
+  vertical-align: middle;
+  padding-right: 30rpx;
+}
+.nav_slide{
+  white-space:nowrap;
+  width: 100%;
+}
+.nav_btn{
+  margin-right: 20rpx;
+  display: inline-block;
+  color: rgba(255,255,255,.4);
+  font-size: 28rpx;
+  height: 80rpx;
+  line-height: 80rpx;
+}
+.nav_btn.on{
+  color: #dbb76c;
+  border-bottom: 1rpx solid #dbb76c;
+}
+.sub_nav{
+  display: flex;
+  font-size: 28rpx;
+  color: #fff;
+  flex-wrap: wrap;
+  align-items: center;
+  align-content: space-between;
+  padding: 0 30rpx;
+}
+.sub_nav_item{
+  width: 25%;
+  background: rgba(255, 255, 255, 0.1);
+  border-right:1px solid #000;
+  border-bottom: 1px solid #000;
+  box-sizing: border-box;
+  height: 80rpx;
+  line-height: 80rpx;
+  text-align: center;
+}
+.sub_nav_item.on{
+  background:  #dbb76c;
+}
+.lists_wrap{
+  padding: 0 30rpx;
+  margin-top: 30rpx;
+}
+.lists{
+  border-bottom: 1px solid rgba(255,255,255,0.1);
+  display: flex;
+  padding: 30rpx 0;
+  align-items: center;
+}
+.lists_img{
+  width: 128rpx;
+  height: 128rpx;
+  background: #fff;
+}
+.lists_img image{
+  width: 128rpx;
+  height: 128rpx;
+}
+.lists_info{
+  flex: 1;
+  padding-left: 30rpx;
+  color: #fff;
+  font-size: 32rpx;
+  min-width: 0;
+}
+.lists_info_update{
+  color: #666;
+  margin-top: 10rpx;
+  font-size: 28rpx;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.null{
+  text-align: center;
+  font-size: 32rpx;
+  color:#fff;
+  margin: 80rpx 0;
+}

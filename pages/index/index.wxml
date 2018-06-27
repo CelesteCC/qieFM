@@ -1,0 +1,53 @@
+<!--index.wxml-->
+<view class="container">
+  <view class='header'>
+    <view class="logo"><image src="../../images/logo.png" mode='widthFix'></image></view>
+    <view class="nav">
+      <scroll-view class="nav_slide" scroll-x="true" scroll-with-animation scroll-into-view="{{toView}}" style="width:100%">
+        <!-- <view class="nav_btn on">精选推荐</view>
+        <view class="nav_btn">情感生活</view>
+        <view class="nav_btn">音乐电台</view>
+        <view class="nav_btn">有声小说</view>
+        <view class="nav_btn">相声曲艺</view>
+        <view class="nav_btn">综艺娱乐</view>
+        <view class="nav_btn">妈咪宝贝</view>
+        <view class="nav_btn">知识干货</view>
+        <view class="nav_btn">历史人文</view>
+        <view class="nav_btn">新闻资讯</view>
+        <view class="nav_btn">搞笑段子</view>
+        <view class="nav_btn">广播电台</view> -->
+        <view class="nav_btn {{ cur==index?'on':'' }}" wx:for="{{nav}}" wx:key="{{index}}" wx:for-item="item" bindtap="tab" data-index="{{index}}" id="nav{{index}}">{{item.name}}</view>
+      </scroll-view>
+    </view>
+  </view>
+  
+  <!-- <swiper indicator-dots="{{indicatorDots}}" autoplay="{{autoplay}}" interval="{{interval}}" duration="{{duration}}"> 
+    <block wx:for="{{imgUrls}}" wx:key="{{index}}">
+      <swiper-item>
+        <image src="{{item}}" class="slide-image" width="375" height="180"/>
+      </swiper-item>
+    </block>
+  </swiper> -->
+
+  <view class="content">
+    <view class="sub_nav">
+      <text class="sub_nav_item {{icur==index?'on':''}}" wx:for="{{subNav}}" wx:key="{{index}}" id="{{item.id}}" data-index="{{index}}" bindtap="showList">{{item.name}}</text>
+    </view>
+  </view>
+
+  <view class="lists_wrap">
+    <block wx:for="{{catagary}}" wx:key="{{index}}">
+      <navigator url="../detail/detail?id={{item.album.albumID}}" hover-class="navigator-hover">
+        <view class="lists">
+          <view class="lists_img"><image src="{{item.album.cover.urls[0].url}}"></image></view>
+          <view class="lists_info">
+            <view>{{item.album.name}}</view>
+            <view class="lists_info_update"><text class="ellip">{{item.album.displayText}}</text></view>
+          </view>
+        </view>
+      </navigator>
+    </block>
+    <view wx:if="{{condition}}" class='null'>暂无数据</view>
+  </view>
+
+</view>
