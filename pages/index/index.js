@@ -2,11 +2,15 @@
 //获取应用实例
 const app = getApp()
 import { list } from '../../utils/list.js'
-import { getDetail } from '../../utils/request.js'
+import { getDetail, getShow } from '../../utils/request.js'
 
 //https://api.imjad.cn/qqfm/v1/?type=skip_show&id=rd004FBkcI0mPADh&shows=rd003Fh8Nr1MJain
+
 //https://api.imjad.cn/qqfm/v1/?type=album&page_size=10&id=38978&page=1
+
 //https://api.imjad.cn/qqfm/v1/?type=show&id=rd004FBkcI0mPADh
+
+//https://api.imjad.cn/qqfm/v1/?type=skip_show&id=rd0016w2lU26VuqL&shows=rd002KcH4y2cvGn7,rd0013fhsF2xor0K,rd000lHmxy3cljTP,rd0017ZtI23ymWMs,rd0022iu4z19G8G4,rd003NrQ7t4cGHdx,rd001Q4xFW0f9D5i,rd004LnvXb4eKc18,rd001fYyLY1Zeal9,rd003jA91p2unI9w,
 
 Page({
   data: {
@@ -100,5 +104,6 @@ Page({
     this.setNav();
     this.setsubNav(0);
     this.detailList(this.data.defaultId)
+    //rd000TYhEt3NmTgz
   }
 })
