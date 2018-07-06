@@ -37,7 +37,7 @@
 
   <view class="lists_wrap">
     <block wx:for="{{catagary}}" wx:key="{{index}}">
-      <navigator url="../detail/detail?id={{item.album.albumID}}&title={{item.album.name}}&fans={{item.album.owner.fansNum}}&nickname={{item.album.owner.nickname}}&update={{item.album.updateTime}}&pic={{item.album.owner.item.album.cover.urls[0].url}}" hover-class="navigator-hover">
+      <navigator url="../detail/detail?id={{item.album.albumID}}&update={{item.album.updateTime}}" hover-class="navigator-hover">
         <view class="lists">
           <view class="lists_img"><image src="{{item.album.cover.urls[0].url}}"></image></view>
           <view class="lists_info">

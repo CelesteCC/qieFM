@@ -1,4 +1,5 @@
 // pages/detail/detail.js
+const app = getApp()
 import { getDetail, getShow, getList } from '../../utils/request.js'
 Page({
 
@@ -8,43 +9,48 @@ Page({
   data: {
     cid:'',
     names:[],
-    cat:[]
+    cat:[],
+    detimg:'',
+    dettit:'',
+    detnickname:'',
+    update:'',
+    desc:'',
+    authorId:''
   },
-
-  /**
-   * 生命周期函数--监听页面加载
-   */
-  onLoad: function (options) {
-    console.log(options)
-    let that = this;
-    wx.showLoading();
-    wx.request({
-      url: 'https://fm.qq.com/webapp/json/luobo_recommend/GetRelatedAlbumV2?t=0.99713997477916&g_tk=&uin=&albumID=rd0037mtXe1yeMR0&pageType=2&uin=&format=json&inCharset=utf-8&outCharset=utf-8&_=1530266339253',
-      method:'get',
-      success:function(res){
-        console.log(res)
-      }
+  updateTime: function (){
+    let time = new Date(this.data.update*1000);
+    this.setData({
+      update: time.getFullYear() + "年" + (time.getMonth() + 1) + "月" + time.getDate() + "日 "
     })
-    getShow(options.id,function(res){
-      
+  },
+  getList: function (options){
+    wx.showLoading();
+    let that = this;
+    // wx.request({
+    //   url: 'https://fm.qq.com/webapp/json/luobo_recommend/GetRelatedAlbumV2?t=0.99713997477916&g_tk=&uin=&albumID=rd0037mtXe1yeMR0&pageType=2&uin=&format=json&inCharset=utf-8&outCharset=utf-8&_=1530266339253',
+    //   method: 'get',
+    //   success: function (res) {
+    //     console.log(res)
+    //   }
+    // })
+    getShow(options.id, function (res) {
       let arr = res.data;
       let arr02 = '';
       let arr03 = [];
-      for( let i = 0;i<10;i++ ){
-        arr02+=arr[i]+',';
+      for (let i = 0; i < 10; i++) {
+        arr02 += arr[i] + ',';
         arr03.push(arr[i]);
       }
       that.setData({
-        cid:arr02,
-        names:arr03
+        cid: arr02,
+        names: arr03
       })
       //console.log(that.data.cid.slice(0,9))
-      getList(options.id, that.data.cid,function(res){
-        
+      getList(options.id, that.data.cid, function (res) {
         let Names = that.data.names;
         let _cat = [];
         for (let j = 0; j < Names.length; j++) {
-          _cat.push(res.data.data.showList[Names[j]].show.name)
+          _cat.push({ name: res.data.data.showList[Names[j]].show.name, playNum: res.data.data.showList[Names[j]].show.lPlayNum, duration: ((res.data.data.showList[Names[j]].show.duration) / 60).toFixed(2), audio: res.data.data.showList[Names[j]].show.audioURL.urls[0].url})
         }
         that.setData({
           cat: _cat
@@ -52,6 +58,34 @@ Page({
         wx.hideLoading()
       })
     })
+  },
+  getDesc: function (options){
+    let curId = options.id;
+    let list = app.globalData.albumInfo;
+    let that = this;
+    for (let i = 0; i < list.length;i++ ){
+      if (curId == list[i].albumID ){
+        that.setData({
+          desc: list[i].desc,
+          dettit: list[i].name,
+          detnickname: list[i].nickname,
+          detimg: list[i].pic,
+          authorId: list[i].anchorID
+        })
+      }
+    }
+  },
+
+  /**
+   * 生命周期函数--监听页面加载
+   */
+  onLoad: function (options) {
+    console.log(options)
+    this.updateTime();
+    
+    this.getList(options);
+    console.log(app.globalData.albumInfo)
+    this.getDesc(options)
   },
 
   /**

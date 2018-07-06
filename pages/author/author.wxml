@@ -1,0 +1,4 @@
+<!--pages/author/author.wxml-->
+<view>
+  <image src="{{img}}"></image>
+</view>

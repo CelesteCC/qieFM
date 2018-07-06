@@ -1,5 +1,32 @@
 <!--pages/detail/detail.wxml-->
 <view>
-  <view></view>
-  <view style='color:#fff' wx:for="{{cat}}" wx:key="{{index}}">{{item}}</view>
+  <view class="header">
+    <view class="det_img"><image src="{{detimg}}"></image></view>
+    <view class="det_info">
+      <text class="det_tit">{{dettit}}</text>
+      <navigator url='../author/author?id={{authorId}}'><view><text class="det_author">主播：{{detnickname}}</text><image mode='widthFix' style='width:28rpx;vertical-align:middle' src="../../images/arrow_right.png"></image></view></navigator>
+      <view class="det_time"><text>{{update}}更新</text></view>
+    </view>
+  </view>
+  <view class='cata_desc'>{{desc}}</view>
+  <view class="cata_list">
+    <text class="cata_list_tit">节目列表</text>
+    <block wx:for="{{cat}}" wx:key="{{index}}">
+      <navigator url="../audio/audio?url={{item.audio}}">
+        <view class='cata_item'>
+          <view class="cata_icon"><image src="../../images/play.png"></image></view>
+          <view class="cata_info">
+            <view class="cata_info_name">{{item.name}}</view>
+            <view>
+              <view class="cata_playnum"><image src="../../images/play02.png"></image><text>{{item.playNum}}</text></view>
+              <view class="cata_playnum"><image src="../../images/time.png"></image><text>{{item.duration}}</text></view>
+            </view>
+          </view>
+        </view>
+      </navigator>
+    </block>
+    
+    <!-- <view style='color:#fff' wx:for="{{cat}}" wx:key="{{index}}">{{item}}</view> -->
+  </view>
+  
 </view>

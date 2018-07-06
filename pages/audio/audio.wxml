@@ -1,0 +1,4 @@
+<!--pages/audio/audio.wxml-->
+<view>
+  <audio poster="{{poster}}" name="{{name}}" author="{{author}}" src="{{audiosrc}}" id="myAudio" controls loop></audio>
+</view>
