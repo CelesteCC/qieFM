@@ -31,7 +31,8 @@ Page({
     icur:0,
     catagary:[],
     defaultId:null,
-    condition:false
+    condition:false,
+    scrollLeft:0
   },
   //设置头部导航
   setNav:function(e){
@@ -46,9 +47,11 @@ Page({
   },
   //头部导航切换
   tab: function (e) {
-    let idx = e.currentTarget.dataset.index
+    console.log(e)
+    let idx = e.currentTarget.dataset.index;
     this.setData({
-      cur: idx
+      cur: idx,
+      scrollLeft: 150
     });
     this.setData({
       icur: 0

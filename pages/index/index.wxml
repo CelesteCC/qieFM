@@ -16,7 +16,7 @@
         <view class="nav_btn">新闻资讯</view>
         <view class="nav_btn">搞笑段子</view>
         <view class="nav_btn">广播电台</view> -->
-        <view class="nav_btn {{ cur==index?'on':'' }}" wx:for="{{nav}}" wx:key="{{index}}" wx:for-item="item" bindtap="tab" data-index="{{index}}" id="nav{{index}}">{{item.name}}</view>
+        <view class="nav_btn {{ cur==index?'on':'' }}" wx:for="{{nav}}" wx:key="{{index}}" wx:for-item="item" bindtap="tab" data-index="{{index}}" id="nav{{index}}" scroll-left="{{scrollLeft}}">{{item.name}}</view>
       </scroll-view>
     </view>
   </view>
